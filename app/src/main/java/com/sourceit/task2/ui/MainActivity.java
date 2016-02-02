@@ -20,9 +20,9 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
 
     private static final int DEFAULT = 10;
-    public static final int MAX = 50;
+    private static final int MAX = 50;
     private int rootHeight;
-    int scrollingHeight;
+    private int scrollingHeight;
 
     private TextView countText;
     private Button countButton;
