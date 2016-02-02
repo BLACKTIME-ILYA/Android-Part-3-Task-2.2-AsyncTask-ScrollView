@@ -1,6 +1,5 @@
 package com.sourceit.task2.ui;
 
-import android.annotation.TargetApi;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -22,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int DEFAULT = 10;
     public static final int MAX = 50;
+    private int rootHeight;
+    int scrollingHeight;
 
     private TextView countText;
     private Button countButton;
@@ -92,21 +93,21 @@ public class MainActivity extends AppCompatActivity {
         });
 
         scrollView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
-            @TargetApi(11)
+
             @Override
             public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
 
-                int rootHeight = ll_root.getHeight() - scrollView.getBottom();
-                L.d("rootHeight: " + rootHeight);
+                if (ll_root.getHeight() != rootHeight) {
+                    rootHeight = ll_root.getHeight();
+                    scrollingHeight = ll_root.getHeight() - scrollView.getBottom();
+                    L.d("rootHeight: " + scrollingHeight);
+                }
 
                 int currentPosition = scrollView.getScrollY();
                 L.d("cur.pos." + currentPosition);
 
-                if (currentPosition == rootHeight) {
-
+                if (currentPosition == scrollingHeight) {
                     addFields(DEFAULT);
-
-
                 }
             }
         });
