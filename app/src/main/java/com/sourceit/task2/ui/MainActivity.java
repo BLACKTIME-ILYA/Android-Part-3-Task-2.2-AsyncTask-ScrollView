@@ -103,10 +103,7 @@ public class MainActivity extends AppCompatActivity {
                     L.d("rootHeight: " + scrollingHeight);
                 }
 
-                int currentPosition = scrollView.getScrollY();
-                L.d("cur.pos." + currentPosition);
-
-                if (currentPosition == scrollingHeight) {
+                if (scrollView.getScrollY() == scrollingHeight) {
                     addFields(DEFAULT);
                 }
             }
